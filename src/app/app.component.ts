@@ -6,5 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-property-binding';
+  title = 'Angular Property Binding Example';
+  count = 0;
+  color = 'green';
+  constructor() { 
+  }
+
+  ngOnInit() {
+    console.log(this.title);
+    
+      setTimeout(()=>{                           //<<<---using ()=> syntax
+        this.countFn(this.count + 1)
+      }, 1000);
+    
+  }
+
+  countFn (count: any): any {
+    this.count = count;
+    console.log(count);
+    if(count < 10) {
+      setTimeout(()=>{                           //<<<---using ()=> syntax
+        this.countFn(this.count + 1)
+      }, 1000);
+    } else {
+      this.color = 'red';
+    }
+  }
+
+  
 }
